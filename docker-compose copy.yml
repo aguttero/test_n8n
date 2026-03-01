@@ -1,0 +1,64 @@
+# version isn't needed as of 2020 for docker compose CLI. 
+# All 2.x and 3.x features supported
+# Docker Swarm still needs a 3.x version
+# version: '3.9'
+
+services:  # containers. same as docker run
+  web: # a friendly name. this is also DNS name inside network
+    build:
+        context: .
+    image: odoo:19.0 # Optional if you use build:
+    pull_policy: never
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    command: odoo -u grades_manager -d test # Optional, replace the default CMD specified by the image
+    environment: # Optional, same as -e in docker run
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo
+    networks:
+      - odoo-net
+    volumes: 
+      - odoo-web-data:/var/lib/odoo # Optional, same as -v in docker run
+      - ./custom_addons:/var/lib/odoo/addons/19.0
+  
+  db:
+    image: postgres:18
+    command:
+    environment: 
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=odoo 
+      - POSTGRES_PASSWORD=odoo 
+      # - PGDATA=/var/lib/postgresql/data/pgdata
+    networks:
+      - odoo-net
+    volumes: 
+      - odoo-db-data:/var/lib/postgresql
+
+  pgadmin:
+    image: dpage/pgadmin4:9.11
+    depends_on:
+      - db 
+    ports:
+      - "5050:80"
+    container_name: pgadmin_odoo
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=aguttero@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=12345
+    networks:
+      - odoo-net
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+
+volumes: # Optional, same as docker volume create
+  odoo-web-data:
+  odoo-db-data:
+  pgadmin-data:
+
+
+networks: # Optional, same as docker network create
+  odoo-net:
+    driver: bridge
