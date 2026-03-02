@@ -1,0 +1,9 @@
+n8n Github:
+https://github.com/n8n-io/n8n/blob/master/docker/images/n8n/Dockerfile
+
+n8n Docker Hub:
+https://hub.docker.com/r/n8nio/n8n
+
+Averiguar Version de n8n:
+bash:
+docker exec -it <nombre_del_contenedor> n8n --version

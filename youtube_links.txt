@@ -1,0 +1,2 @@
+install n8n locally with Docker Desktop
+https://www.youtube.com/watch?v=6ET3G7GiqZA&t=10s
