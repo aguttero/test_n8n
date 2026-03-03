@@ -4,6 +4,61 @@ https://github.com/n8n-io/n8n/blob/master/docker/images/n8n/Dockerfile
 n8n Docker Hub:
 https://hub.docker.com/r/n8nio/n8n
 
+
 Averiguar Version de n8n:
 bash:
 docker exec -it <nombre_del_contenedor> n8n --version
+
+
+
+
+
+
+
+
+Manual docker steps:
+docker volume create n8n_data
+
+docker run -it --rm \
+ --name n8n \
+ -p 5678:5678 \
+ -e GENERIC_TIMEZONE="<YOUR_TIMEZONE>" \
+ -e TZ="<YOUR_TIMEZONE>" \
+ -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
+ -e N8N_RUNNERS_ENABLED=true \
+ -v n8n_data:/home/node/.n8n \
+ docker.n8n.io/n8nio/n8n
+
+
+container name:
+    n8n
+
+host port:
+    5678
+
+Volumes:
+    host path : n8n_data
+    container path: /home/node/.n8n
+
+Env:
+    GENERIC_TIMEZONE="<YOUR_TIMEZONE>"
+    TZ="<YOUR_TIMEZONE>"
+    N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+    N8N_RUNNERS_ENABLED=true
+_____
+
+Error de Python task runner:
+Failed to start Python task runner in internal mode. because Python 3 is missing from this system. Launching a Python runner in internal mode is intended only for debugging and is not recommended for production. Users are encouraged to deploy in external mode. See: https://docs.n8n.io/hosting/configuration/task-runners/#setting-up-external-mode
+
+El error menciona el "internal mode". Por seguridad y rendimiento, n8n prefiere que el código Python corra en un proceso separado. En tu docker-compose.yml, añade estas variables de entorno para que n8n use el ejecutable que acabas de instalar:
+
+services:
+  n8n:
+    build: .
+    environment:
+      - N8N_BLOCK_INTERNAL_PYTHON_CUSTOM_PACKAGES=false # Permite usar librerías extra
+      - N8N_PYTHON_EXECUTABLE=/usr/bin/python3         # Indica dónde está Python
+
+
+Por qué sugiere el External Mode
+En producción, n8n recomienda usar un Task Runner (un contenedor separado solo para ejecutar scripts). Sin embargo, para desarrollo local, instalarlo dentro de la misma imagen de n8n (como acabamos de hacer) es la forma más sencilla y rápida de que el nodo de Python funcione

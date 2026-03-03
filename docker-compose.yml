@@ -1,8 +1,8 @@
 services:
   n8n:
-    build:
-        context: .
-    image: docker.n8n.io/n8nio/n8n:24.13
+    # build:
+    #    context: .
+    image: docker.n8n.io/n8nio/n8n:2.9.4
     pull_policy: never
     # restart: always / on-failure / unless-stopped
 
@@ -12,8 +12,9 @@ services:
     environment: # Optional, same as -e in docker run
       - GENERIC_TIMEZONE=America/Santiago
       - TZ=America/Santiago
+      - N8N_DIAGNOSTICS_ENABLED=false
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
-      - N8N_RUNNERS_ENABLED=true
+      # - N8N_RUNNERS_ENABLED=true # Deprecated
       - N8N_BASIC_AUTH_ACTIVE=true
       - N8N_BASIC_AUTH_USER=${N8N_USER}
       - N8N_BASIC_AUTH_PASSWORD=${N8N_PASSWORD}
