@@ -1,0 +1,76 @@
+IT Architecture Analysis: PDF Data Extraction to Google Sheets
+This is a well-defined problem. Let me break down the landscape for you.
+Understanding Your PDF Structure
+Adobe Sign PDFs are standard PDF files with a specific internal structure. When a document goes through Adobe Sign, it typically contains:
+
+AcroForm fields – the original form fields from the Word/Google Docs template
+XFA data – sometimes present in complex forms
+Adobe Sign metadata – timestamps, signer info, audit trail data embedded as XML streams or document-level metadata
+A visual audit trail page – appended at the end, which contains timestamps in human-readable form
+
+The good news: all of this is accessible without Adobe Sign API calls, because Adobe Sign embeds a complete audit trail and all field data directly into the signed PDF file itself.
+
+###
+
+Approach 1 — n8n + Python Script Node (Recommended)
+Use n8n's Execute Command or Code node to run a Python script using pypdf2 / pdfplumber / pymupdf.
+Flow:
+Trigger (email/folder/webhook)
+  → Download PDF
+  → Python Script (extract fields + XMP timestamps)
+  → Switch node (route by doc type)
+  → Map fields to columns
+  → Google Sheets node
+Pros: Full control, handles all 4 doc types with a config file, runs locally or on your n8n server. pymupdf is especially powerful for XMP metadata extraction.
+Cons: Requires Python on the n8n host, slight maintenance overhead.
+
+###
+Approach 2 — n8n + HTTP Request to a Microservice
+Deploy a small FastAPI or Flask microservice that accepts a PDF upload and returns JSON of extracted fields + timestamps. n8n calls it via HTTP Request node.
+Flow:
+Trigger
+  → Download PDF
+  → HTTP Request → FastAPI service (returns JSON)
+  → Switch node (doc type routing)
+  → Google Sheets node
+Pros: Clean separation of concerns, reusable, testable independently, scalable. Best architecture if n8n is cloud-hosted (e.g., n8n.cloud) where you can't run arbitrary scripts.
+Cons: Requires hosting a microservice.
+
+###
+Approach 3 — n8n Code Node (JavaScript) with pdf-lib or pdf2json
+Use n8n's native Code node (Node.js) with a PDF parsing library.
+Pros: Fully contained within n8n, no external dependencies.
+Cons: JavaScript PDF libraries are less mature than Python ones for AcroForm extraction; XMP metadata parsing is harder.
+
+###
+Approach 4 — Google Apps Script as Middleware
+Trigger a Google Apps Script from n8n that downloads the PDF from Drive, parses it, and writes directly to Sheets.
+Pros: No extra infrastructure, tight Google ecosystem integration.
+Cons: Apps Script has poor native PDF parsing; you'd need to call an external parser anyway.
+
+###
+My Recommendation
+Go with Approach 1 or 2 depending on your n8n hosting:
+
+Self-hosted n8n → Approach 1 (Python in Execute Command node) using pymupdf (also called fitz). It's the fastest to build and most capable.
+n8n.cloud → Approach 2 (FastAPI microservice). Deploy it on a small VM or even as a Cloud Run / Lambda function.
+
+For the timestamp extraction, pymupdf can read the XMP metadata stream directly where Adobe Sign stores its audit data. If the timestamps are only on the visual audit trail page, you may need a lightweight OCR pass on that page as a fallback — but in most Adobe Sign PDFs they are also in the XMP.
+
+###
+Suggested n8n Workflow Architecture
+[Trigger: Email / Google Drive / Webhook]
+        ↓
+[Download Binary File]
+        ↓
+[Execute Python Script]  ←── config/mapping.json (4 doc types)
+        ↓
+[Parse JSON output]
+        ↓
+[Switch: doc_type field]
+    ↙   ↓   ↓   ↘
+[Map fields per doc type — 4 branches]
+        ↓
+[Google Sheets: Append Row]
+        ↓
+[Notify / Log]

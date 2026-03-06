@@ -1,0 +1,28 @@
+Here's what you have — three files with a clear onboarding sequence:
+
+The 3 Files
+inspect_pdf.py — Run this first, on each of your 4 PDF types. It dumps every AcroForm field name and value, the XMP metadata, and the audit trail text. This is how you discover the real field names to plug into the config.
+
+###
+adobe_sign_extractor.py — The main extraction engine. Key things to customise after running inspect:
+
+DOC_TYPE_CONFIGS — fill in the real AcroForm field names for each of your 4 doc types
+discriminator_field / discriminator_value — what makes each type unique
+_parse_adobe_sign_xmp() — if your XMP timestamp fields use different attribute names than the defaults, adjust the regex patterns there
+
+###
+n8n_wrapper.py — Called by the n8n Execute Command node. Reads the PDF as base64 from stdin, writes to a temp file, runs the extractor, and returns clean JSON to stdout. The comments inside explain the full n8n node sequence.
+
+Timestamp extraction strategy
+The script uses a two-layer approach with auto-fallback:
+
+XMP metadata (primary) — Adobe Sign embeds structured XML with echosign:DateSigned, echosign:DateCompleted etc. directly in the file
+Visual audit trail page (fallback) — parses the text of the last page, which always has the event log with timestamps
+
+The final timestamps block in the JSON output picks whichever source has each value, so you always get the best available data.
+
+Recommended first step
+bash
+python3 inspect_pdf.py your_signed_po.pdf
+Run that on one sample of each of your 4 document types and share the output — I can help you finalize the DOC_TYPE_CONFIGS mapping instantly.
+
