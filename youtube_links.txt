@@ -1,2 +1,28 @@
 install n8n locally with Docker Desktop
 https://www.youtube.com/watch?v=6ET3G7GiqZA&t=10s
+
+Overview español
+https://www.youtube.com/watch?v=GJIcfjOrO8E
+
+Curso de 5 horas de n8n con AI
+https://www.youtube.com/watch?v=K7SoGqR5ISY
+
+Recomendaciones de Claude:
+
+Tutoriales de YouTube recomendados
+Para n8n + IA:
+
+Canal "Cole Medin" — tiene tutoriales específicos de n8n con Claude y automatización de contenido
+Canal "Leon van Zyl" — muy bueno para flujos de contenido con IA
+Canal "Matt Wolfe" — cubre stacks de automatización con IA en general
+Busca: "n8n AI content automation social media 2024"
+
+Para el flujo específico de contenido:
+
+Busca: "n8n social media automation with AI"
+Busca: "n8n Claude API workflow tutorial"
+Canal "Nik Lauda AI" — tiene casos de uso muy similares al tuyo
+
+Para aprender n8n desde cero:
+
+La serie oficial de n8n en YouTube: "n8n for beginners"
