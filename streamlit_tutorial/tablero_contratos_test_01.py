@@ -1,5 +1,5 @@
 # import streamlit as st
-import pymupdf
+import pymupdf, csv, sqlite3
 
 # Config section
 FOLDER_IN = "./file_in"
@@ -9,6 +9,44 @@ FOLDER_OUT = "./file_out"
 # Test config section
 file_name_in = "response no audit trail_v01.pdf"
 file_name_out = "JAD_OUTPUT_V01.txt"
+
+# DB Setup
+db_dashboard = sqlite3.connect("/data/jad.db")
+cursor = db_dashboard.cursor()
+
+# Create DB table (only first time)
+cursor.execute ('''
+    CREATE TABLE IF NOT EXISTS documentos (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        gerencia_solicitante TEXT,
+        rut_proveedor TEXT,
+        monto_uf TEXT,
+        cuenta_contable TEXT,
+        centro_costo TEXT,
+        orden_controlling TEXT,
+        descripcion_servicio TEXT,
+        aprobador1 TEXT,
+        aprobador2 TEXT,
+        aprobador3 TEXT,
+        aprobador4 TEXT,
+        aprobador5 TEXT,
+    )
+''')
+
+# Insertar una fila de datos usando variables
+# Usamos "?" para evitar ataques de inyección y errores de comas
+datos = ("2023-10-27", "Gerencia de Finanzas", 1500.50, "factura_01.pdf")
+
+cursor.execute('''
+    INSERT INTO documentos (fecha_proceso, gerencia, monto, archivo_origen)
+    VALUES (?, ?, ?, ?)
+''', datos)
+
+# 4. Guardar cambios y cerrar
+db_dashboard.commit()
+db_dashboard.close()
+
+print("¡Datos guardados en la base de datos con éxito!")
 
 
 # Load JAD and Contract PDF
@@ -37,6 +75,8 @@ def convert_pdf_2_text (file_name_in:str, file_name_out:str):
 # - Centro de costo
 # - Orden Controlling
 # - Descripción del servicio
+# - aprobador (es)
+# - fecha aprobacion
 
 def search_next_line(file_name:str, search_text:str) -> str:
     """Returns the next line after the searched text in the <file_name> text file"""
@@ -67,6 +107,18 @@ print(f"La gerencia es: {resultado}")
 
 
 # TODO Save To CSV
+
+var1 = "campo 1"
+var2 = "campo 2"
+var3 = "campo 3"
+
+variables = [var1, var2, var3]
+
+with open("output.csv", "a", newline="", encoding="utf-8") as f:
+    writer = csv.writer(f)
+    writer.writerow(variables) # Crea la línea: var1,var2,var3
+
+
 # TODO Load Contract
 # TODO Extract Contracct fields
 # TODO Append To CSV
