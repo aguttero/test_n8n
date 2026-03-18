@@ -4,3 +4,8 @@ client_secret/
 .venv/
 file_in/
 file_out/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
