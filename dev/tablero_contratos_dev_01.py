@@ -120,7 +120,16 @@ with open("output.csv", "a", newline="", encoding="utf-8") as f:
 
 
 # TODO Load Contract
-# TODO Extract Contracct fields
+# TODO Extract Contrato Marco fields
+    # - Nombre y RUT del proveedor
+    # - Fechas de formalización e inicio del servicio
+    # - Tipo de renovación o plazo fijo
+    # - Días de anticipación para informar término
+    # - Anexos del documento (NDA, Anexo 1, Anexo 3, etc.)
+    # - Descripción, duración y tarifa del servicio
+    # - Reajuste y multas
+    # - Monto de garantía
+
 # TODO Append To CSV
 # TODO Log data transactions
 # TODO Purge temp data
