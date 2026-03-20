@@ -4,6 +4,7 @@ client_secret/
 .venv/
 file_in/
 file_out/
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
