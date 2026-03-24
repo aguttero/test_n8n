@@ -1,0 +1,765 @@
+<!-- https://opensource.adobe.com/acrobat-sign/developer_guide/toc.html -->
+<!-- dev_adbe_sign/best-practices.html -->
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Create, manage, track, and automate signing workflows with the Acrobat Sign APIs. Create apps that integrate with Adobe's enterprise-class product lineup. Download JAVA, JS, C#, REST, or OpenAPI SDKs, test with Postman, or use Acrobat Sign Embed and the Solutions for Government APIs"/>
+     <title>Developer Guide &mdash; Acrobat Sign Developer Guide</title>
+  <link rel="icon" type="image/x-icon" href="../_static/favicon.ico">
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link href="../_static/jquery-ui.css" rel="stylesheet" />
+  <link href="../_static/copybutton.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+  
+  <link rel="canonical" href="https://opensource.adobe.com/acrobat-sign/developer_guide/toc.html" />
+  
+
+  
+  
+  
+  <script type="text/javascript" id="documentation_options" data-url_root="../"
+    src="../_static/documentation_options.js"></script>
+  <script type="text/javascript" src="../_static/jquery.js"></script>
+  <script type="text/javascript" src="../_static/underscore.js"></script>
+  <script type="text/javascript" src="../_static/doctools.js"></script>
+  <script type="text/javascript" src="../_static/language_data.js"></script>
+  <script type="text/javascript" src="../_static/searchtools.js"></script>
+  <script type="text/javascript" src="../_static/clipboard.min.js"></script>
+  <script type="text/javascript" src="../_static/copybutton.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="Acrobat Sign API Overview" href="index.html" /> 
+
+  <script>  window.marketingtech = { adobe: { launch: { url: 'https://assets.adobedtm.com/d4d114c60e50/a0e989131fd5/launch-5dd5dd2177e6.min.js', controlPageLoad: false, }, alloy: { edgeConfigId: '2cba807b-7430-41ae-9aac-db2b0da742d5', }, target: false, audienceManager: false, }, sophia: false, };</script><script src=https://www.adobe.com/marketingtech/main.standard.min.js></script>
+
+  <script>
+    $(document).ready(function () {
+      $(window).scroll(function () {
+        if ($(this).scrollTop() >= 50) {
+          $('.fixedbar, .wy-nav-side').addClass('scroll');
+          $('.wy-top-menu-wrapper').fadeOut();
+        } else {
+          $('.fixedbar, .wy-nav-side').removeClass('scroll');
+          $('.wy-top-menu-wrapper').fadeIn();
+        }
+      });
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+          $('#scroll').fadeIn();
+        } else {
+          $('#scroll').fadeOut();
+        }
+      });
+      $('#scroll').click(function () {
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+      });
+    });
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  <div class="wy-grid-for-nav">
+    
+    <div class="fixedbarsearch"><img src="../_static/images/acrobatsignlogo.svg" class="searchlogo"/>
+      
+<div role="search" class="inlinediv">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+    </div>
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side"><!-- scrolling area -->
+      <div class="wy-side-scroll" >
+        
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+          
+          
+          
+          
+          
+          <p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Acrobat Sign API Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#get-a-free-developer-account">Get a free developer account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#create-an-app">Create an app</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="best-practices.html">API Best Practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#base-uri">Base URI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#details">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#bad-practices-identified">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#best-practices">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#pseudo-code">Pseudo Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#good-pattern">Good Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#bad-pattern">Bad Pattern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#transient-document">Transient Document</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id1">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id2">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id3">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id4">Pseudo Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id5">Good Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id6">Bad Pattern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#create-agreement">Create Agreement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id7">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id8">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id9">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id10">Pseudo Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id11">Good Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id12">Bad Pattern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#agreement-state">Agreement State</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id13">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id14">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id15">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id16">Pseudo Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id17">Good Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id18">Bad Pattern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#signing-url">Signing URL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id19">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id20">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id21">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id22">Pseudo Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id23">Good Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id24">Bad Pattern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#tracking-progress-status-of-agreement">Tracking Progress / Status of Agreement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id25">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id26">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id27">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id28">Pseudo Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id29">Good Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id30">Bad Pattern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#retrieving-list-of-agreements-and-details">Retrieving List of Agreements and Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id31">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id32">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id33">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id34">Pseudo Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id35">Good Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id36">Bad Pattern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#retrieving-list-of-agreements-of-a-widget">Retrieving List of Agreements of a Widget</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id37">Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#retrieving-list-of-users-and-details">Retrieving List of Users and Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id38">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id39">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id40">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id41">Pseudo Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id42">Good Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id43">Bad Pattern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#api-rate-limits-and-retry">API Rate Limits and Retry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id44">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id45">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id46">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id47">Pseudo Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id48">Good Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="best-practices.html#id49">Bad Pattern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gstarted.html">Create an Application Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gstarted.html#create-an-app-in-the-web-ui">Create an app in the web UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gstarted.html#get-the-app-id-and-secret">Get the app ID and secret</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gstarted.html#configure-oauth">Configure OAuth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gstarted.html#configure-scopes">Configure scopes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gstarted.html#create-an-authorization-request-link">Create an authorization request link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gstarted.html#configure-the-redirect-uri-on-your-server">Configure the redirect URI on your server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gstarted.html#success-vs-failure">Success vs failure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gstarted.html#the-customer-experience">The customer experience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gstarted.html#getting-the-access-token">Getting the access token</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="oauth.html">Managing OAuth Tokens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="oauth.html#authorization-request">Authorization request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth.html#access-token-request">Access token request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth.html#refresh-token-request">Refresh token request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth.html#revoking-a-token">Revoking a token</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scenarios.html">Example Scenarios</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scenarios.html#parental-consent">Parental Consent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scenarios.html#creating-a-widget">Creating a Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scenarios.html#photo-rights">Photo Rights</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apiusage.html">API Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#send-for-signing-create-an-agreement">Send for Signing (Create an agreement)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apiusage.html#upload-a-document">Upload a document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apiusage.html#send-the-document">Send the document</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#resolve-request-signature-integration-error">Resolve Request Signature integration error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#check-the-document-signing-status">Check the Document signing status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#send-reminders">Send Reminders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#download-the-agreement">Download the Agreement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#create-a-widget">Create a Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#get-the-signing-url">Get the Signing URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#add-form-fields-to-agreements">Add form fields to agreements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#generate-templates-from-in-progress-or-signed-agreements">Generate templates from in-progress or signed agreements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#send-private-messages-to-the-counter-signers">Send private messages to the counter signers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#redirect-signers-to-a-specific-url">Redirect signers to a specific URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#add-agreement-redirect-options">Add Agreement Redirect Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#api-throttling">API Throttling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apiusage.html#rest-api">REST API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apiusage.html#system-load-throttling">System Load Throttling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apiusage.html#handling-rate-limiting-http-429">Handling Rate Limiting (HTTP 429)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="apiusage.html#agreement-document-processing">Agreement Document Processing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apiusage.html#megasign-send-in-bulk">MegaSign (Send in Bulk)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apiusage.html#webform-signing">Webform Signing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="apiusage.html#webform-first-signer-participant">Webform First Signer/Participant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apiusage.html#get-endpoints">GET endpoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apiusage.html#api-polling-threshold">API polling threshold</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apiusage.html#recommended-implementation">Recommended Implementation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="webhookapis.html">Webhook APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#post-webhooks">POST /webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#get-webhooks">GET /webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#get-webhooks-webhookid">GET /webhooks/{webhookId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#put-webhooks-webhookid">PUT /webhooks/{webhookId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#put-webhooks-webhookid-state">PUT /webhooks/{webhookId}/state</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#delete-webhooks-webhookid">DELETE /webhooks/{webhookId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#standard-api-request-error-codes">Standard API request error codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#standard-api-request-headers">Standard API request headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#using-aws-lambda-functions">Using AWS Lambda Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="webhookapis.html#create-an-aws-lambda-function">Create an AWS Lambda function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="webhookapis.html#register-your-acrobat-sign-webhook">Register your Acrobat Sign webhook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="webhookapis.html#configure-the-aws-api-gateway">Configure the AWS API Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="webhookapis.html#deploy-the-api">Deploy the API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="webhookapis.html#ready-to-use">Ready to Use</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#using-azure-functions">Using Azure Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="webhookapis.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="webhookapis.html#creating-an-azure-functions-trigger-webhook">Creating an Azure Functions Trigger-Webhook</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="webhookapis.html#create-a-js-httptrigger-function">Create a JS HttpTrigger function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="webhookapis.html#register-the-webhook">Register the webhook</a></li>
+<li class="toctree-l4"><a class="reference internal" href="webhookapis.html#get-the-function-s-url">Get the function’s URL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="webhook-endpoint-api.html">WebhookEndpoint APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="webhook-endpoint-api.html#post-webhookendpoints">POST /webhookEndpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhook-endpoint-api.html#get-webhookendpoints">GET /webhookEndpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhook-endpoint-api.html#get-webhookendpoints-webhookendpointid">GET /webhookEndpoints/{webhookEndpointId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhook-endpoint-api.html#put-webhookendpoints-webhookendpointid">PUT /webhookEndpoints/{webhookEndpointId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhook-endpoint-api.html#delete-webhookendpoints-webhookendpointid">DELETE /webhookEndpoints/{webhookEndpointId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhook-endpoint-api.html#standard-api-request-headers">Standard API request headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhook-endpoint-api.html#standard-api-request-error-codes">Standard API request error codes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="samples.html">REST API Samples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#the-package">The package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#using-the-samples">Using the Samples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="samples.html#output-path">Output Path</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#create-a-new-widget-with-countersigners">Create a New Widget with Countersigners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#download-an-agreements-audit-report">Download an Agreement’s Audit Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#download-the-combined-document-for-an-agreement">Download the Combined Document for an Agreement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#download-documents-from-an-agreement">Download Documents from an Agreement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#get-an-agreements-status">Get an Agreement’s Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#get-an-agreements-signing-url">Get an Agreement’s Signing URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#send-reminders-to-participants">Send reminders to participants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#send-an-agreement-using-a-library-document">Send an Agreement Using a Library Document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#send-an-agreement-using-a-transient-document">Send an Agreement Using a Transient Document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#generate-view-url-or-access-code-for-an-agreement">Generate View URL or Access code for an agreement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#id1">POST /agreements/{agreementId}/deliverableAccess</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="samples.html#request-headers">Request headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="samples.html#request-object-schema">Request object schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="samples.html#path-parameter">Path Parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="samples.html#request-body">Request Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="samples.html#response">Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">Web Message Events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="events.html#system-requirements">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html#supported-events">Supported events</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="events.html#workflow-events">Workflow events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="events.html#page-load-events">Page Load events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="events.html#session-events">Session events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="events.html#user-action-events">User action events</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="events.html#using-events">Using events</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating and Updating Apps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migrating.html#updating-api-authentication-methods">Updating API authentication methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating.html#migrating-from-soap">Migrating From SOAP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migrating.html#soap-to-rest-mapping">SOAP to REST mapping</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="migrating.html#general-purpose-methods">General-purpose Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migrating.html#document-methods">Document Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migrating.html#status-methods">Status Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migrating.html#user-methods">User Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migrating.html#web-form-methods">Web Form Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migrating.html#test-methods">Test Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="migrating.html#deprecated-soap-methods">Deprecated SOAP Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="migrating.html#access-methods">Access Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migrating.html#doc-methods">Doc Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migrating.html#id1">Status Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migrating.html#id2">User Methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Core Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://www.adobe.com/go/acrobatsigndevrnotes#://">API release notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://secure.na1.adobesign.com/public/docs/restapi/v6#://">API Reference (v6)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsigndevguide#://">Developer Guide (core v6)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsignwebhook#://">    Webhook Reference (v6)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://opensource.adobe.com/acrobat-sign/signgov#://">Solutions for Government</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://opensource.adobe.com/acrobat-sign/embedpartner#://">Acrobat Sign Embed</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsignsdks#://">SDK downloads</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsignpostman#://">Postman workspace</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsigndevaccount#://">    Free developer account form</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsigntechblog#://">    FAQs and tech tips</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/esign-dev-cert#://">Application certification form</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsignintegrations#://">Integration guides</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://exchange.adobe.com/apps/browse/?product=SIGN&amp;sort=MOST_RECENT#://">3rd party integrations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/trust/resources.html#://">Security and compliance</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsigndevforum#://">Forum</a></li>
+</ul>
+
+          
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <!--- @@@@@@@@@@@@@@@@ Custom @@@@@@@@@@@@@@@@ -->
+      <div class="fixedbar">
+        <div class="wy-menu-items">
+          <a href="https://www.adobe.com/go/acrobatsigndevhome" class="topbarlink">Dev Home</a>
+          <a href="https://www.adobe.com/documentcloud/industries/government.html" class="topbarlink">Government</a>
+          <a href="https://www.adobe.com/documentcloud/integrations/isv-partner-program.html" class="topbarlink">Partner</a>
+          <a href="	https://www.adobe.com/go/acrobatsignforum"  class="topbarlink">Forum</a>
+        </div>
+        <div class="sign-in">
+          <a href="https://secure.echosign.com/public/login" class="btn btn-console">Sign In</a>
+        </div>
+      </div>
+      <!--- @@@@@@@@@@@@@@@@ Custom @@@@@@@@@@@@@@@@ -->
+
+      
+      
+      <div class="wy-nav-content">
+        
+        <span class="lastupdated" style="color:lightgrey">
+          Last update: Dec 17, 2025. 
+        </span>
+        
+          <div class="rst-content">
+            
+            <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Developer Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="index.html" class="btn btn-neutral float-right" title="Acrobat Sign API Overview" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+      
+      
+  </div>
+  
+  <hr/>
+</div>-->
+            <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+              <div itemprop="articleBody">
+                
+  <div class="section" id="developer-guide">
+<h1>Developer Guide<a class="headerlink" href="#developer-guide" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Acrobat Sign API Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#get-a-free-developer-account">Get a free developer account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#create-an-app">Create an app</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="best-practices.html">API Best Practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#base-uri">Base URI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#details">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#bad-practices-identified">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#best-practices">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#pseudo-code">Pseudo Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#transient-document">Transient Document</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id1">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id2">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id3">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id4">Pseudo Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#create-agreement">Create Agreement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id7">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id8">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id9">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id10">Pseudo Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#agreement-state">Agreement State</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id13">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id14">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id15">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id16">Pseudo Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#signing-url">Signing URL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id19">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id20">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id21">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id22">Pseudo Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#tracking-progress-status-of-agreement">Tracking Progress / Status of Agreement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id25">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id26">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id27">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id28">Pseudo Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#retrieving-list-of-agreements-and-details">Retrieving List of Agreements and Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id31">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id32">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id33">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id34">Pseudo Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#retrieving-list-of-agreements-of-a-widget">Retrieving List of Agreements of a Widget</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id37">Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#retrieving-list-of-users-and-details">Retrieving List of Users and Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id38">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id39">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id40">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id41">Pseudo Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#api-rate-limits-and-retry">API Rate Limits and Retry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id44">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id45">Bad Practices Identified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id46">Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="best-practices.html#id47">Pseudo Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gstarted.html">Create an Application Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gstarted.html#create-an-app-in-the-web-ui">Create an app in the web UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gstarted.html#get-the-app-id-and-secret">Get the app ID and secret</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gstarted.html#configure-oauth">Configure OAuth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gstarted.html#configure-scopes">Configure scopes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gstarted.html#create-an-authorization-request-link">Create an authorization request link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gstarted.html#configure-the-redirect-uri-on-your-server">Configure the redirect URI on your server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gstarted.html#success-vs-failure">Success vs failure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gstarted.html#the-customer-experience">The customer experience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gstarted.html#getting-the-access-token">Getting the access token</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="oauth.html">Managing OAuth Tokens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="oauth.html#authorization-request">Authorization request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth.html#access-token-request">Access token request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth.html#refresh-token-request">Refresh token request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth.html#revoking-a-token">Revoking a token</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scenarios.html">Example Scenarios</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scenarios.html#parental-consent">Parental Consent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scenarios.html#creating-a-widget">Creating a Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scenarios.html#photo-rights">Photo Rights</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apiusage.html">API Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#send-for-signing-create-an-agreement">Send for Signing (Create an agreement)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apiusage.html#upload-a-document">Upload a document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apiusage.html#send-the-document">Send the document</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#resolve-request-signature-integration-error">Resolve Request Signature integration error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#check-the-document-signing-status">Check the Document signing status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#send-reminders">Send Reminders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#download-the-agreement">Download the Agreement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#create-a-widget">Create a Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#get-the-signing-url">Get the Signing URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#add-form-fields-to-agreements">Add form fields to agreements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#generate-templates-from-in-progress-or-signed-agreements">Generate templates from in-progress or signed agreements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#send-private-messages-to-the-counter-signers">Send private messages to the counter signers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#redirect-signers-to-a-specific-url">Redirect signers to a specific URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#add-agreement-redirect-options">Add Agreement Redirect Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiusage.html#api-throttling">API Throttling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apiusage.html#rest-api">REST API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apiusage.html#agreement-document-processing">Agreement Document Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apiusage.html#webform-first-signer-participant">Webform First Signer/Participant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apiusage.html#get-endpoints">GET endpoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="webhookapis.html">Webhook APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#post-webhooks">POST /webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#get-webhooks">GET /webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#get-webhooks-webhookid">GET /webhooks/{webhookId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#put-webhooks-webhookid">PUT /webhooks/{webhookId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#put-webhooks-webhookid-state">PUT /webhooks/{webhookId}/state</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#delete-webhooks-webhookid">DELETE /webhooks/{webhookId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#standard-api-request-error-codes">Standard API request error codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#standard-api-request-headers">Standard API request headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#using-aws-lambda-functions">Using AWS Lambda Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="webhookapis.html#create-an-aws-lambda-function">Create an AWS Lambda function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="webhookapis.html#register-your-acrobat-sign-webhook">Register your Acrobat Sign webhook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="webhookapis.html#configure-the-aws-api-gateway">Configure the AWS API Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="webhookapis.html#deploy-the-api">Deploy the API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="webhookapis.html#ready-to-use">Ready to Use</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="webhookapis.html#using-azure-functions">Using Azure Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="webhookapis.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="webhookapis.html#creating-an-azure-functions-trigger-webhook">Creating an Azure Functions Trigger-Webhook</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="webhook-endpoint-api.html">WebhookEndpoint APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="webhook-endpoint-api.html#post-webhookendpoints">POST /webhookEndpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhook-endpoint-api.html#get-webhookendpoints">GET /webhookEndpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhook-endpoint-api.html#get-webhookendpoints-webhookendpointid">GET /webhookEndpoints/{webhookEndpointId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhook-endpoint-api.html#put-webhookendpoints-webhookendpointid">PUT /webhookEndpoints/{webhookEndpointId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhook-endpoint-api.html#delete-webhookendpoints-webhookendpointid">DELETE /webhookEndpoints/{webhookEndpointId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhook-endpoint-api.html#standard-api-request-headers">Standard API request headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhook-endpoint-api.html#standard-api-request-error-codes">Standard API request error codes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="samples.html">REST API Samples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#the-package">The package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#using-the-samples">Using the Samples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="samples.html#output-path">Output Path</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#create-a-new-widget-with-countersigners">Create a New Widget with Countersigners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#download-an-agreements-audit-report">Download an Agreement’s Audit Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#download-the-combined-document-for-an-agreement">Download the Combined Document for an Agreement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#download-documents-from-an-agreement">Download Documents from an Agreement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#get-an-agreements-status">Get an Agreement’s Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#get-an-agreements-signing-url">Get an Agreement’s Signing URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#send-reminders-to-participants">Send reminders to participants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#send-an-agreement-using-a-library-document">Send an Agreement Using a Library Document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#send-an-agreement-using-a-transient-document">Send an Agreement Using a Transient Document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#generate-view-url-or-access-code-for-an-agreement">Generate View URL or Access code for an agreement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples.html#id1">POST /agreements/{agreementId}/deliverableAccess</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="samples.html#request-headers">Request headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="samples.html#request-object-schema">Request object schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="samples.html#path-parameter">Path Parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="samples.html#request-body">Request Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="samples.html#response">Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">Web Message Events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="events.html#system-requirements">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html#supported-events">Supported events</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="events.html#workflow-events">Workflow events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="events.html#page-load-events">Page Load events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="events.html#session-events">Session events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="events.html#user-action-events">User action events</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="events.html#using-events">Using events</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating and Updating Apps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migrating.html#updating-api-authentication-methods">Updating API authentication methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating.html#migrating-from-soap">Migrating From SOAP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migrating.html#soap-to-rest-mapping">SOAP to REST mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migrating.html#deprecated-soap-methods">Deprecated SOAP Methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Core Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://www.adobe.com/go/acrobatsigndevrnotes#://">API release notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://secure.na1.adobesign.com/public/docs/restapi/v6#://">API Reference (v6)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsigndevguide#://">Developer Guide (core v6)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsignwebhook#://">    Webhook Reference (v6)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://opensource.adobe.com/acrobat-sign/signgov#://">Solutions for Government</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://opensource.adobe.com/acrobat-sign/embedpartner#://">Acrobat Sign Embed</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsignsdks#://">SDK downloads</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsignpostman#://">Postman workspace</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Other Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsigndevaccount#://">    Free developer account form</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsigntechblog#://">    FAQs and tech tips</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/esign-dev-cert#://">Application certification form</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsignintegrations#://">Integration guides</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://exchange.adobe.com/apps/browse/?product=SIGN&amp;sort=MOST_RECENT#://">3rd party integrations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/trust/resources.html#://">Security and compliance</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.adobe.com/go/acrobatsigndevforum#://">Forum</a></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+            </div>
+            <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Adobe Inc..
+      <span class="lastupdated">
+        Last update: Dec 17, 2025. 
+        <img src="../_static/adobelogo.png" class="logo"/> 
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+          </div>
+        </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+    jQuery(function () {
+      SphinxRtdTheme.Navigation.enable(true);
+    });
+  </script> 
+
+  <script src="../_static/redirect.js"></script>
+</body>
+
+</html>
