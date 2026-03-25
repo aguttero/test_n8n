@@ -1,0 +1,15 @@
+{
+  "scope": [
+    "AGREEMENT_ASSETS"
+  ],
+  "agreementAssetsCriteria": {
+    "createdDate": {
+      "range": {
+        "min": "string",
+        "max": "string",
+        "lt": "string",
+        "gt": "2026-03-23T00:00:00"
+      }
+    }
+  }
+}

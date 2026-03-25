@@ -1,0 +1,73 @@
+{
+  "query": "string",
+  "scope": [
+    "string"
+  ],
+  "agreementAssetsCriteria": {
+    "role": [
+      "string"
+    ],
+    "visibility": "string",
+    "groupId": [
+      "string"
+    ],
+    "externalId": [
+      "string"
+    ],
+    "pageSize": 50,
+    "subTypes": [
+      "string"
+    ],
+    "participantEmail": [
+      "string"
+    ],
+    "type": [
+      "string"
+    ],
+    "userId": [
+      "string"
+    ],
+    "parentId": [
+      "string"
+    ],
+    "sortByField": "string",
+    "startIndex": 0,
+    "createdDate": {
+      "range": {
+        "min": "string",
+        "max": "string",
+        "lt": "string",
+        "gt": "string"
+      }
+    },
+    "sortOrder": "string",
+    "modifiedDate": {
+      "range": {
+        "min": "string",
+        "max": "string",
+        "lt": "string",
+        "gt": "string"
+      }
+    },
+    "queryableFields": [
+      "string"
+    ],
+    "id": [
+      "string"
+    ],
+    "workflowId": [
+      "string"
+    ],
+    "expirationDate": {
+      "range": {
+        "min": "string",
+        "max": "string",
+        "lt": "string",
+        "gt": "string"
+      }
+    },
+    "status": [
+      "string"
+    ]
+  }
+}

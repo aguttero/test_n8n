@@ -1,0 +1,25 @@
+{
+  "scope": [
+    "AGREEMENT_ASSETS"
+  ],
+  "agreementAssetsCriteria": {
+     "groupId": [
+      "CBJCHBCAABAABEPcdsJtrIEk4cmxjdg8Xci-nQw7HtfB"
+      ],
+      "type": [
+      "AGREEMENT"
+      ],
+      "status": [
+      "SIGNED"
+      ],
+      "startIndex": 0,
+      "pageSize": 100,
+      "sortByField":"CREATED_DATE",
+      "sortOrder":"ASC",
+      "createdDate": {
+        "range": {
+          "gt": "2026-01-01T00:00:00-03:00"
+        }
+      }
+    }
+}
