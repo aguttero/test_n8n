@@ -1,4 +1,4 @@
-import requests, json, requests
+import requests, json
 from dotenv import dotenv_values
 
 # Configuration

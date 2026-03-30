@@ -1,6 +1,5 @@
 import requests, json
 from dotenv import dotenv_values
-import requests
 
 # Configuration
 config = dotenv_values(".env")
